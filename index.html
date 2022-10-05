@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Interactive Credit Card</title>
+  <link rel="stylesheet" href="../interactive-card src/style/global.css">
+</head>
+
+<body>
+  <main>
+
+    <section id="cards">
+      <div class="container">
+        <div class="card card--front">
+          <div class="logo">
+            <svg width="84" height="47" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <ellipse cx="23.478" cy="23.5" rx="23.478" ry="23.5" fill="#fff" />
+              <path
+                d="M83.5 23.5c0 5.565-4.507 10.075-10.065 10.075-5.559 0-10.065-4.51-10.065-10.075 0-5.565 4.506-10.075 10.065-10.075 5.558 0 10.065 4.51 10.065 10.075Z"
+                stroke="#fff" />
+            </svg>
+          </div>
+          <div class="card__number">
+            0000 0000 0000 0000
+          </div>
+          <div class="card__details">
+            <div class="card__name">Jonathan Banks</div>
+            <div class="card__date">00/00</div>
+          </div>
+        </div>
+        <div class="card card--back">
+          <div class="card__cvc">000</div>
+        </div>
+      </div>
+    </section>
+
+    <section id="forms">
+      <div class="container">
+
+        <form class="formfield">
+
+          <p class="formfield__fieldset">
+            <label for="cardname" class="formfield__label">
+              Cardholder Name
+            </label>
+            <input type="text" id="cardname" name="card-name" placeholder="e.g. Jonathan Banks" class="formfield__name">
+          </p>
+
+          <p class="formfield__fieldset">
+            <label for="cardnumber" class="formfield__label">
+              Card Number
+            </label>
+            <input type="text" id="cardnumber" name="card-number" placeholder="e.g. 1234 5678 9123 0000"
+              class="formfield__number">
+          </p>
+
+          <div class="field__holder">
+            <div class="formfield__fieldset formfield__fieldset--date">
+              <label for="month" id="cardDate" class="formfield__label">
+                Exp. Date (MM/YY)
+              </label>
+              <div>
+                <input type="text" name="exp-month" id="month" aria-labelledby="cardDate" placeholder="MM"
+                  class="formfield__month">
+                <input type="text" name="exp-year" id="year" aria-labelledby="cardDate" placeholder="YY"
+                  class="formfield__year">
+              </div>
+            </div>
+            <p class="formfield__fieldset formfield__fieldset--cvc">
+              <label for="cardcvc" class="formfield__label">
+                CVC
+              </label>
+              <input type="text" id="cardcvc" name="cvc_number" placeholder="e.g. 123" class="formfield__cvc">
+            </p>
+          </div>
+
+          <button type="submit" class="formfield__btn">Confirm</button>
+        </form>
+      </div>
+    </section>
+
+  </main>
+</body>
+
+</html>

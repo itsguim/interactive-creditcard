@@ -1,0 +1,13 @@
+*.sketch
+*.fig
+*.xd
+
+.DS_Store
+.prettierignore
+
+Thumbs.db
+Thumbs.db:encryptable
+ehthumbs.db
+
+template/
+workflow.md

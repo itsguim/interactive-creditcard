@@ -1,0 +1,159 @@
+:root {
+	--inp-active: hsl(249, 99%, 64%) to hsl(278, 94%, 30%);
+	--inp-error: hsl(0, 100%, 66%);
+
+	--neutral: hsl(0, 0%, 100%);
+	--txt-soft-cl: hsl(270, 3%, 87%);
+	--txt-med-cl: hsl(279, 6%, 55%);
+	--txt-str-cl: hsl(278, 68%, 11%);
+
+	--fsize-lg: 1.8rem;
+	--fsize-sm: 1.2rem;
+	--fs-front-mobile: 1.5rem;
+	--fs-back-mobile: 1rem;
+	--ffamily: 'Space Grotesk', sans-serif;
+	--fweight: 500;
+	/* All paddings and margins are magic numbers */
+}
+/* ---- */
+
+body {
+	font-size: var(--fsize);
+	font-family: var(--ffamily);
+}
+
+#cards {
+	position: relative;
+}
+
+#cards::before {
+	/* Just a background */
+	content: '';
+	background: url(../assets/images/bg-main-mobile.png) no-repeat;
+	background-size: cover;
+	width: 100%;
+	height: 20rem;
+	position: absolute;
+	top: 0;
+	left: 0;
+	z-index: -1;
+}
+
+.container {
+	/*Limits the expansion and centralize in mobile*/
+	position: relative;
+	max-width: 30rem;
+	min-height: 28rem;
+	margin-inline: auto;
+}
+
+.card {
+	display: flex;
+	flex-direction: column;
+	min-width: 24rem;
+	border-radius: 9px;
+	color: var(--txt-soft-cl);
+	position: absolute;
+}
+
+.card--front {
+	background: url(../assets/images/bg-card-front.png) no-repeat;
+	background-size: cover;
+	padding: 1.4rem;
+	z-index: 5;
+	top: 11rem;
+	left: 1rem;
+}
+
+.card__number {
+	letter-spacing: 0.2rem;
+	margin-top: 3rem;
+	font-size: var(--fs-front-mobile);
+}
+
+.card__details {
+	display: flex;
+	justify-content: space-between;
+	font-size: 0.8rem;
+	letter-spacing: 0.1rem;
+	text-transform: uppercase;
+	margin-block: 1rem 0.2rem;
+	padding-inline: 0 1.4rem;
+}
+
+.card--back {
+	background: url(../assets/images/bg-card-back.png) center no-repeat;
+	background-size: cover;
+	font-size: var(--fs-back-mobile);
+	align-items: flex-end;
+	justify-content: center;
+	min-height: 13.2rem;
+	top: 3rem;
+	right: 1rem;
+}
+
+.card__cvc {
+	padding-right: 3rem;
+}
+
+/* ------ Form Section */
+.formfield {
+	max-width: 90%;
+	margin-inline: auto;
+	display: flex;
+	flex-direction: column;
+	gap: 1.5rem;
+}
+
+.formfield__fieldset {
+	display: flex;
+	flex-direction: column;
+	gap: 0.5rem;
+}
+
+.formfield__label {
+	text-transform: uppercase;
+	letter-spacing: 0.1rem;
+}
+
+.formfield input {
+	padding: 0.6rem 1rem;
+	border-style: none;
+	border: 1px solid var(--txt-soft-cl);
+	border-radius: 8px;
+	font-size: 1.1rem;
+}
+
+.formfield input::placeholder {
+	color: var(--txt-soft-cl);
+}
+
+.formfield input:focus {
+	border-color: var(--inp-active);
+}
+
+.field__holder {
+	display: flex;
+}
+
+.formfield__fieldset--date,
+.formfield__fieldset--cvc {
+	display: inline-flex;
+	width: 50%;
+}
+
+.formfield__month,
+.formfield__year {
+	width: 5.2rem;
+}
+
+.formfield__btn {
+	border-style: none;
+	background: var(--txt-str-cl);
+	color: var(--neutral);
+	border-radius: 8px;
+	padding: 1rem;
+	font-size: var(--fsize-sm);
+	cursor: pointer;
+	margin-top: 0.5rem;
+}

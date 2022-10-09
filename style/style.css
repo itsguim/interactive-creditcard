@@ -7,13 +7,12 @@
 	--txt-med-cl: hsl(279, 6%, 55%);
 	--txt-str-cl: hsl(278, 68%, 11%);
 
-	--fsize-lg: 1.8rem;
-	--fsize-sm: 1.2rem;
-	--fs-front-mobile: 1.5rem;
-	--fs-back-mobile: 1rem;
+	--fsize-btn: 1.2rem;
+	--fsize-label: 0.9rem;
+	--fs-front-mobile: 1.3rem;
+	--fs-back-mobile: 0.9rem;
 	--ffamily: 'Space Grotesk', sans-serif;
 	--fweight: 500;
-	/* All paddings and margins are magic numbers */
 }
 /* ---- */
 
@@ -27,7 +26,7 @@ body {
 }
 
 #cards::before {
-	/* Just a background */
+	/* Background */
 	content: '';
 	background: url(../assets/images/bg-main-mobile.png) no-repeat;
 	background-size: cover;
@@ -40,53 +39,52 @@ body {
 }
 
 .container {
-	/*Limits the expansion and centralize in mobile*/
+	/*Controla a expansão do conteúdo*/
 	position: relative;
-	max-width: 30rem;
-	min-height: 28rem;
+	max-width: 25rem;
+	min-height: 27rem;
 	margin-inline: auto;
 }
 
 .card {
 	display: flex;
 	flex-direction: column;
-	min-width: 24rem;
 	border-radius: 9px;
 	color: var(--txt-soft-cl);
 	position: absolute;
 }
 
 .card--front {
-	background: url(../assets/images/bg-card-front.png) no-repeat;
+	background: url(../assets/images/bg-card-front.png) center no-repeat;
 	background-size: cover;
-	padding: 1.4rem;
+	padding: 1.2rem 2rem 1.2rem 1.2rem;
 	z-index: 5;
 	top: 11rem;
 	left: 1rem;
 }
 
 .card__number {
-	letter-spacing: 0.2rem;
-	margin-top: 3rem;
+	letter-spacing: 0.1rem;
+	margin-top: 2.3rem;
 	font-size: var(--fs-front-mobile);
 }
 
 .card__details {
 	display: flex;
 	justify-content: space-between;
-	font-size: 0.8rem;
+	font-size: 0.7rem;
 	letter-spacing: 0.1rem;
 	text-transform: uppercase;
 	margin-block: 1rem 0.2rem;
-	padding-inline: 0 1.4rem;
 }
 
 .card--back {
 	background: url(../assets/images/bg-card-back.png) center no-repeat;
-	background-size: cover;
+	background-size: contain;
 	font-size: var(--fs-back-mobile);
 	align-items: flex-end;
 	justify-content: center;
+	min-width: 20rem;
 	min-height: 13.2rem;
 	top: 3rem;
 	right: 1rem;
@@ -98,7 +96,7 @@ body {
 
 /* ------ Form Section */
 .formfield {
-	max-width: 90%;
+	max-width: 88%;
 	margin-inline: auto;
 	display: flex;
 	flex-direction: column;
@@ -114,14 +112,15 @@ body {
 .formfield__label {
 	text-transform: uppercase;
 	letter-spacing: 0.1rem;
+	font-size: var(--fsize-label);
 }
 
 .formfield input {
 	padding: 0.6rem 1rem;
-	border-style: none;
 	border: 1px solid var(--txt-soft-cl);
 	border-radius: 8px;
 	font-size: 1.1rem;
+	color: var(--txt-str-cl);
 }
 
 .formfield input::placeholder {
@@ -129,17 +128,22 @@ body {
 }
 
 .formfield input:focus {
-	border-color: var(--inp-active);
+	outline: none;
+	background: linear-gradient(#fff, #fff) padding-box,
+		linear-gradient(to right, hsl(249, 99%, 64%), hsl(278, 94%, 30%)) border-box;
+	border: 1px solid transparent;
 }
 
 .field__holder {
 	display: flex;
 }
 
-.formfield__fieldset--date,
+.formfield__fieldset--date {
+	width: 100%;
+}
+
 .formfield__fieldset--cvc {
-	display: inline-flex;
-	width: 50%;
+	width: 40%;
 }
 
 .formfield__month,
@@ -153,7 +157,7 @@ body {
 	color: var(--neutral);
 	border-radius: 8px;
 	padding: 1rem;
-	font-size: var(--fsize-sm);
+	font-size: var(--fsize-btn);
 	cursor: pointer;
 	margin-top: 0.5rem;
 }

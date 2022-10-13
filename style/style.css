@@ -9,10 +9,13 @@
 
 	--fsize-btn: 1.2rem;
 	--fsize-label: 0.9rem;
-	--fs-front-mobile: 1.3rem;
+	--fs-front-mobile: 1.2rem;
 	--fs-back-mobile: 0.9rem;
 	--ffamily: 'Space Grotesk', sans-serif;
 	--fweight: 500;
+
+	--cfront-wid: 20.5rem;
+	--cback-wid: 20rem;
 }
 /* ---- */
 
@@ -58,13 +61,15 @@ body {
 	background: url(../assets/images/bg-card-front.png) center no-repeat;
 	background-size: cover;
 	padding: 1.2rem 2rem 1.2rem 1.2rem;
+	width: var(--cfront-wid);
+	min-height: 12rem;
 	z-index: 5;
 	top: 11rem;
 	left: 1rem;
 }
 
 .card__number {
-	letter-spacing: 0.1rem;
+	letter-spacing: 0.2rem;
 	margin-top: 2.3rem;
 	font-size: var(--fs-front-mobile);
 }
@@ -84,7 +89,7 @@ body {
 	font-size: var(--fs-back-mobile);
 	align-items: flex-end;
 	justify-content: center;
-	min-width: 20rem;
+	width: var(--cback-wid);
 	min-height: 13.2rem;
 	top: 3rem;
 	right: 1rem;

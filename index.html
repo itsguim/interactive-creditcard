@@ -28,7 +28,9 @@
           </div>
           <div class="card__details">
             <div class="card__name">Erick Cabral</div>
-            <div class="card__date">00/00</div>
+            <div class="card__date">
+              <span class="js__mm">00</span>/<span class="js__yy">00</span>
+            </div>
           </div>
         </div>
         <div class="card card--back">
@@ -64,16 +66,17 @@
               </label>
               <div>
                 <input type="text" name="exp-month" id="month" aria-labelledby="cardDate" placeholder="MM"
-                  class="formfield__month">
+                  class="formfield__month" maxlength="2">
                 <input type="text" name="exp-year" id="year" aria-labelledby="cardDate" placeholder="YY"
-                  class="formfield__year">
+                  class="formfield__year" maxlength="2">
               </div>
             </div>
             <p class="formfield__fieldset formfield__fieldset--cvc">
               <label for="cardcvc" class="formfield__label">
                 CVC
               </label>
-              <input type="text" id="cardcvc" name="cvc_number" placeholder="e.g. 123" class="formfield__cvc">
+              <input type="text" id="cardcvc" name="cvc_number" placeholder="e.g. 123" class="formfield__cvc"
+                maxlength="3">
             </p>
           </div>
 

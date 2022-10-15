@@ -58,7 +58,33 @@ function initCardInteraction() {
 }
 initCardInteraction()
 
+// Error Passing
+function passInvalidStyling(fieldId, inputId, errorText) {
+  const fieldSelect = document.getElementById(fieldId)
+  const inputSelect = document.getElementById(inputId)
+  // Cria mensagem
+  let error = document.createElement('span')
+  error.setAttribute('class', 'error-msg')
+  error.innerText = errorText
+  // Add borda
+  inputSelect.classList.add('js-invalid')
+
+  // Append msg
+  // Necessario criar uma condicional pra só adicionar 1x apenas- 
+  fieldSelect.appendChild(error) // <- Condicionar
+}
 
 
+// Validation (Testing)
+function validateInput() {
+  const numReg = /(\d{4}-\d{4}-\d{4}-\d{4})/g
 
-
+  function testRegex() {
+    const value = this.value
+    if (!numReg.test(value)) {
+      passInvalidStyling('numberfield', 'cardnumber', 'Esse campo está inválido')
+    }
+  }
+  numberInput.addEventListener('blur', testRegex)
+}
+validateInput()

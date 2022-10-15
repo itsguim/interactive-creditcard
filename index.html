@@ -44,14 +44,14 @@
 
         <form class="formfield">
 
-          <p class="formfield__fieldset">
+          <p class="formfield__fieldset" id="namefield">
             <label for="cardname" class="formfield__label">
               Cardholder Name
             </label>
             <input type="text" id="cardname" name="card-name" placeholder="e.g. Erick Cabral" class="formfield__name">
           </p>
 
-          <p class="formfield__fieldset">
+          <p class="formfield__fieldset" id="numberfield">
             <label for="cardnumber" class="formfield__label">
               Card Number
             </label>
@@ -60,7 +60,7 @@
           </p>
 
           <div class="field__holder">
-            <div class="formfield__fieldset formfield__fieldset--date">
+            <div class="formfield__fieldset formfield__fieldset--date" id="datefield">
               <label for="month" id="cardDate" class="formfield__label">
                 Exp. Date (MM/YY)
               </label>
@@ -71,7 +71,7 @@
                   class="formfield__year" maxlength="2">
               </div>
             </div>
-            <p class="formfield__fieldset formfield__fieldset--cvc">
+            <p class="formfield__fieldset formfield__fieldset--cvc" id="cvcfield">
               <label for="cardcvc" class="formfield__label">
                 CVC
               </label>

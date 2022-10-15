@@ -166,3 +166,14 @@ body {
 	cursor: pointer;
 	margin-top: 0.5rem;
 }
+
+/* JS DOM */
+
+.js-invalid {
+	outline: 1px solid var(--inp-error);
+}
+
+.js-invalid ~ .error-msg {
+	color: var(--inp-error);
+	font-size: 12px;
+}

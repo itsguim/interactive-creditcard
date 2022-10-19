@@ -59,32 +59,41 @@ function initCardInteraction() {
 initCardInteraction()
 
 // Error Passing
+function clearErrorMsg() {
+  const errorSpans = document.querySelectorAll('.error-msg')
+  errorSpans.forEach((el) => {
+    el.remove()
+  })
+} // ** Need to find a better way, this removes all spans **
+
 function passInvalidStyling(fieldId, inputId, errorText) {
   const fieldSelect = document.getElementById(fieldId)
   const inputSelect = document.getElementById(inputId)
-  // Cria mensagem
+  // Create and set the msg
   let error = document.createElement('span')
   error.setAttribute('class', 'error-msg')
   error.innerText = errorText
-  // Add borda
+  // Add invalid border on input
   inputSelect.classList.add('js-invalid')
-
+  // Clear all previous error messages before adding a new one
+  clearErrorMsg()
   // Append msg
-  // Necessario criar uma condicional pra só adicionar 1x apenas- 
-  fieldSelect.appendChild(error) // <- Condicionar
+  fieldSelect.appendChild(error)
 }
 
-
-// Validation (Testing)
+// Validation(Testing)
 function validateInput() {
   const numReg = /(\d{4}-\d{4}-\d{4}-\d{4})/g
 
-  function testRegex() {
+  function validateCardNum() {
     const value = this.value
     if (!numReg.test(value)) {
       passInvalidStyling('numberfield', 'cardnumber', 'Esse campo está inválido')
+    } else {
+      this.classList.remove('js-invalid')
+      clearErrorMsg()
     }
   }
-  numberInput.addEventListener('blur', testRegex)
+  numberInput.addEventListener('blur', validateCardNum)
 }
 validateInput()

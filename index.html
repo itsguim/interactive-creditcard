@@ -44,20 +44,20 @@
 
         <form class="formfield">
 
-          <p class="formfield__fieldset" id="namefield">
+          <div class="formfield__fieldset" id="namefield">
             <label for="cardname" class="formfield__label">
               Cardholder Name
             </label>
             <input type="text" id="cardname" name="card-name" placeholder="e.g. Erick Cabral" class="formfield__name">
-          </p>
+          </div>
 
-          <p class="formfield__fieldset" id="numberfield">
+          <div class="formfield__fieldset" id="numberfield">
             <label for="cardnumber" class="formfield__label">
               Card Number
             </label>
             <input type="text" id="cardnumber" name="card-number" placeholder="e.g. 1234-5678-9123-0000"
               class="formfield__number" maxlength="19">
-          </p>
+          </div>
 
           <div class="field__holder">
             <div class="formfield__fieldset formfield__fieldset--date" id="datefield">
@@ -71,13 +71,13 @@
                   class="formfield__year" maxlength="2">
               </div>
             </div>
-            <p class="formfield__fieldset formfield__fieldset--cvc" id="cvcfield">
+            <div class="formfield__fieldset formfield__fieldset--cvc" id="cvcfield">
               <label for="cardcvc" class="formfield__label">
                 CVC
               </label>
               <input type="text" id="cardcvc" name="cvc_number" placeholder="e.g. 123" class="formfield__cvc"
                 maxlength="3">
-            </p>
+            </div>
           </div>
 
           <button type="submit" class="formfield__btn">Confirm</button>

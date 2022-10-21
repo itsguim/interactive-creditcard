@@ -18,7 +18,7 @@ function initCardInteraction() {
     let inputValue = e.target.value
     cardName.innerText = inputValue
     if (!inputValue) {
-      cardName.innerText = 'Erick Cabral'
+      cardName.innerText = 'Titular do Cartão'
     }
   }
 
@@ -59,16 +59,18 @@ function initCardInteraction() {
 initCardInteraction()
 
 const isInvalid = {
-  clearErrorMsg: function (textClearField) {
-    const errorSpans = document.querySelectorAll(textClearField)
-    errorSpans.forEach((el) => {
-      el.remove()
-    })
-    /* textClearField being the id+span of the formfield which I want to remove the error message from. e.g: ('#numberfield span')...
-    Prevents deleting all the error messages on other fields*/
+  clearErrorLog: function (inputId) {
+    const target = document.querySelector(inputId)
+    // Execute the clear error only if the class is already added
+    if (target.classList.contains('js-invalid')) {
+      target.nextElementSibling.remove()
+      target.classList.remove('js-invalid')
+    } else {
+      return
+    }
   },
 
-  passInvalid: function (fieldId, inputId, errorTxt, textClearField) {
+  passInvalid: function (fieldId, inputId, errorTxt) {
     const fieldSelect = document.querySelector(fieldId)
     const inputSelect = document.querySelector(inputId)
     // Create and set the msg
@@ -77,8 +79,6 @@ const isInvalid = {
     error.innerText = errorTxt
     // Add invalid border on input
     inputSelect.classList.add('js-invalid')
-    // Clear all previous error messages before adding a new one
-    this.clearErrorMsg(textClearField)
     // Append msg
     fieldSelect.appendChild(error)
   },
@@ -90,29 +90,28 @@ function validateInputs() {
   function validateName() {
     let value = this.value
     if (value === '') {
-      isInvalid.passInvalid('#namefield', '#cardname', 'Por favor, preencha o campo', '#namefield span')
+      isInvalid.clearErrorLog('#cardname')
+      isInvalid.passInvalid('#namefield', '#cardname', 'Por favor, preencha o campo')
     } else {
-      isInvalid.clearErrorMsg('#namefield span')
-      this.classList.remove('js-invalid')
+      isInvalid.clearErrorLog('#cardname')
     }
   }
   nameInput.addEventListener('blur', validateName)
-  //
 
   function validateCardNum() {
     let value = this.value
     const numRegTest = /(\d{4}-\d{4}-\d{4}-\d{4})/g.test(value)
     if (value === '') {
-      isInvalid.passInvalid('#numberfield', '#cardnumber', 'Por favor, preencha o campo', '#numberfield span')
+      isInvalid.clearErrorLog('#cardnumber')
+      isInvalid.passInvalid('#numberfield', '#cardnumber', 'Por favor, preencha o campo')
     } else if (!numRegTest) {
-      isInvalid.passInvalid('#numberfield', '#cardnumber', 'Formato incorreto', '#numberfield span')
+      isInvalid.clearErrorLog('#cardnumber')
+      isInvalid.passInvalid('#numberfield', '#cardnumber', 'Formato inválido')
     } else {
-      this.classList.remove('js-invalid')
-      isInvalid.clearErrorMsg('#numberfield span')
+      isInvalid.clearErrorLog('#cardnumber')
     }
     return numRegTest
   }
   numberInput.addEventListener('blur', validateCardNum)
-
 }
 validateInputs()

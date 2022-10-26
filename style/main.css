@@ -22,6 +22,7 @@
 body {
 	font-size: var(--fsize);
 	font-family: var(--ffamily);
+	background-color: #efebf2;
 }
 
 #cards {

@@ -59,7 +59,7 @@ function initCardInteraction() {
 initCardInteraction()
 
 const isInvalid = {
-  clearErrorLog: function (inputId) {
+  clearErrorFrom: function (inputId) {
     const target = document.querySelector(inputId)
     // Execute the clear error only if the class is already added
     if (target.classList.contains('js-invalid')) {
@@ -87,31 +87,64 @@ const isInvalid = {
 // Validation(Testing)
 function validateInputs() {
 
-  function validateName() {
+  function validateCardName() {
     let value = this.value
+    let nameRegTest = /[a-zA-Z]+/g.test(value)
     if (value === '') {
-      isInvalid.clearErrorLog('#cardname')
+      isInvalid.clearErrorFrom('#cardname')
       isInvalid.passInvalid('#namefield', '#cardname', 'Por favor, preencha o campo')
+    } else if (!nameRegTest) {
+      isInvalid.clearErrorFrom('#cardname')
+      isInvalid.passInvalid('#namefield', '#cardname', 'Apenas letras, por gentileza')
     } else {
-      isInvalid.clearErrorLog('#cardname')
+      isInvalid.clearErrorFrom('#cardname')
     }
+
+    return nameRegTest
   }
-  nameInput.addEventListener('blur', validateName)
+  nameInput.addEventListener('blur', validateCardName)
 
   function validateCardNum() {
     let value = this.value
     const numRegTest = /(\d{4}-\d{4}-\d{4}-\d{4})/g.test(value)
     if (value === '') {
-      isInvalid.clearErrorLog('#cardnumber')
+      isInvalid.clearErrorFrom('#cardnumber')
       isInvalid.passInvalid('#numberfield', '#cardnumber', 'Por favor, preencha o campo')
     } else if (!numRegTest) {
-      isInvalid.clearErrorLog('#cardnumber')
+      isInvalid.clearErrorFrom('#cardnumber')
       isInvalid.passInvalid('#numberfield', '#cardnumber', 'Formato inválido')
     } else {
-      isInvalid.clearErrorLog('#cardnumber')
+      isInvalid.clearErrorFrom('#cardnumber')
     }
     return numRegTest
   }
   numberInput.addEventListener('blur', validateCardNum)
+
+  function validateCardDate() {
+    const monVal = monthInput.value,
+      yearVal = yearInput.value;
+    ;
+    const monReg = /^[0-9]*$/.test(monVal)
+    const yearReg = /^[0-9]*$/.test(yearVal)
+
+    if (monVal === '' || yearVal === '') {
+      isInvalid.clearErrorFrom('#year')
+      isInvalid.passInvalid('#datefield', '#year', 'Preencha os campos vazios')
+      monthInput.classList.add('js-invalid')
+    } else if (!monReg || !yearReg) {
+      isInvalid.clearErrorFrom('#year')
+      isInvalid.passInvalid('#datefield', '#year', 'Apenas números')
+      monthInput.classList.add('js-invalid')
+    } else {
+      isInvalid.clearErrorFrom('#year')
+      monthInput.classList.remove('js-invalid')
+    }
+
+    let testValues = { monReg, yearReg } // Returning regex.test from both values
+    return testValues
+  }
+  yearInput.addEventListener('blur', validateCardDate) // Triggers when finish typing year input
+
+
 }
 validateInputs()

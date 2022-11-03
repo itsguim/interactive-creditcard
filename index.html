@@ -39,49 +39,57 @@
       </div>
     </section>
 
-    <section id="forms">
+    <section id="form">
       <div class="container">
-
-        <form class="formfield">
-
-          <div class="formfield__fieldset" id="namefield">
-            <label for="cardname" class="formfield__label">
-              Nome do Titular
-            </label>
-            <input type="text" id="cardname" name="card-name" placeholder="e.g. Carla G. Freitas"
-              class="formfield__name">
-          </div>
-
-          <div class="formfield__fieldset" id="numberfield">
-            <label for="cardnumber" class="formfield__label">
-              Número do Cartão
-            </label>
-            <input type="text" id="cardnumber" name="card-number" placeholder="e.g. 1234-5678-9123-0000"
-              class="formfield__number" maxlength="19">
-          </div>
-
-          <div class="field__holder">
-            <div class="formfield__fieldset formfield__fieldset--date">
-              <label for="month" id="cardDate" class="formfield__label">
-                Validade (MM/AA)
+        <form id="form-main">
+          <div class="formfield" id="input-screen">
+            <div class="formfield__fieldset" id="namefield">
+              <label for="cardname" class="formfield__label">
+                Nome do Titular
               </label>
-              <div id="datefield">
-                <input type="text" name="exp-month" id="month" aria-labelledby="cardDate" placeholder="MM"
-                  class="formfield__month" maxlength="2">
-                <input type="text" name="exp-year" id="year" aria-labelledby="cardDate" placeholder="AA"
-                  class="formfield__year" maxlength="2">
+              <input type="text" id="cardname" name="card-name" placeholder="e.g. Carla G. Freitas"
+                class="formfield__name">
+            </div>
+            <div class="formfield__fieldset" id="numberfield">
+              <label for="cardnumber" class="formfield__label">
+                Número do Cartão
+              </label>
+              <input type="text" id="cardnumber" name="card-number" placeholder="e.g. 1234-5678-9123-0000"
+                class="formfield__number" maxlength="19">
+            </div>
+            <div class="field__holder">
+              <div class="formfield__fieldset formfield__fieldset--date">
+                <label for="month" id="cardDate" class="formfield__label">
+                  Validade (MM/AA)
+                </label>
+                <div id="datefield">
+                  <input type="text" name="exp-month" id="month" aria-labelledby="cardDate" placeholder="MM"
+                    class="formfield__month" maxlength="2">
+                  <input type="text" name="exp-year" id="year" aria-labelledby="cardDate" placeholder="AA"
+                    class="formfield__year" maxlength="2">
+                </div>
+              </div>
+              <div class="formfield__fieldset formfield__fieldset--cvc" id="cvcfield">
+                <label for="cardcvc" class="formfield__label">
+                  CVC
+                </label>
+                <input type="text" id="cardcvc" name="cvc_number" placeholder="e.g. 123" class="formfield__cvc"
+                  maxlength="3">
               </div>
             </div>
-            <div class="formfield__fieldset formfield__fieldset--cvc" id="cvcfield">
-              <label for="cardcvc" class="formfield__label">
-                CVC
-              </label>
-              <input type="text" id="cardcvc" name="cvc_number" placeholder="e.g. 123" class="formfield__cvc"
-                maxlength="3">
-            </div>
+            <button type="submit" class="btn">Confirmar</button>
           </div>
 
-          <button type="submit" class="formfield__btn">Confirm</button>
+          <div class="formfield formfield--success" id="success-screen">
+            <div class="success__icon">
+              <img src="/interactive-card src/assets/images/icon-complete.svg" alt="">
+            </div>
+            <div class="success__text">
+              <p class="success__text__p1">OBRIGADO!</p>
+              <p class="success__text__p2">Nós adicionamos os detalhes do seu cartão</p>
+            </div>
+            <button class="btn btn--continue" id="reset-btn">Continue</button>
+          </div>
         </form>
       </div>
     </section>

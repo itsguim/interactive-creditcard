@@ -1,12 +1,13 @@
+const nameInput = document.querySelector('#cardname'),
+  numberInput = document.querySelector('#cardnumber'),
+  monthInput = document.querySelector('#month'),
+  yearInput = document.querySelector('#year'),
+  cvcInput = document.querySelector('#cardcvc');
 // Inputs
-const nameInput = document.querySelector('#cardname')
-const numberInput = document.querySelector('#cardnumber')
-const monthInput = document.querySelector('#month')
-const yearInput = document.querySelector('#year')
-const cvcInput = document.querySelector('#cardcvc')
 
+// Card Interaction
 function initCardInteraction() {
-  // Card field selectors / Seletores do cartão
+  // Card field selectors
   const cardName = document.querySelector('.card__name')
   const cardNumber = document.querySelector('.card__number')
   const cardMonth = document.querySelector('.js__mm')
@@ -48,7 +49,6 @@ function initCardInteraction() {
     if (!inputValue) { cardCvc.innerText = '000' }
   }
 
-  // Card interaction events 
   nameInput.addEventListener('keyup', passCardName)
   numberInput.addEventListener('keyup', passCardNumber)
   monthInput.addEventListener('keyup', passCardDate)
@@ -59,7 +59,7 @@ initCardInteraction()
 
 // Invalid Styling
 const isInvalid = {
-  clearErrorFrom: function (inputId) {
+  clearErrorFrom(inputId) {
     const target = document.querySelector(inputId)
     // Execute the clear error only if the class is already added
     if (target.classList.contains('js-invalid')) {
@@ -70,7 +70,7 @@ const isInvalid = {
     }
   },
 
-  passInvalid: function (fieldId, inputId, errorTxt) {
+  passInvalid(fieldId, inputId, errorTxt) {
     const fieldSelect = document.querySelector(fieldId)
     const inputSelect = document.querySelector(inputId)
     // Create and set the msg
@@ -87,9 +87,9 @@ const isInvalid = {
 // Input Validation
 const validate = {
   inputName() {
-    let value = this.value
-    const nameRegTest = /^[a-zA-Z\s]+$/g.test(value)
-    if (value === '') {
+    const nameValue = nameInput.value
+    const nameRegTest = /^[a-zA-ZÀ-ú?.\s]+$/g.test(nameValue)
+    if (nameValue === '') {
       isInvalid.clearErrorFrom('#cardname')
       isInvalid.passInvalid('#namefield', '#cardname', 'Por favor, preencha o campo')
     } else if (!nameRegTest) {
@@ -102,14 +102,14 @@ const validate = {
   },
 
   inputNumber() {
-    let value = this.value
-    const numRegTest = /(\d{4}-\d{4}-\d{4}-\d{4})/g.test(value)
-    if (value === '') {
+    const numValue = numberInput.value
+    const numRegTest = /(\d{4}-\d{4}-\d{4}-\d{4})/g.test(numValue)
+    if (numValue === '') {
       isInvalid.clearErrorFrom('#cardnumber')
       isInvalid.passInvalid('#numberfield', '#cardnumber', 'Por favor, preencha o campo')
     } else if (!numRegTest) {
       isInvalid.clearErrorFrom('#cardnumber')
-      isInvalid.passInvalid('#numberfield', '#cardnumber', 'Formato inválido')
+      isInvalid.passInvalid('#numberfield', '#cardnumber', 'Formato inválido, ex: (1111-2222-3333-0000)')
     } else {
       isInvalid.clearErrorFrom('#cardnumber')
     }
@@ -119,16 +119,15 @@ const validate = {
   inputDates() {
     const monVal = monthInput.value,
       yearVal = yearInput.value;
-
-    const monReg = /^[0-9]*$/.test(monVal)
-    const yearReg = /^[0-9]*$/.test(yearVal)
+    const monReg = /^[0-9]{2}$/.test(monVal)
+    const yearReg = /^[0-9]{2}$/.test(yearVal)
     if (monVal === '' || yearVal === '') {
       isInvalid.clearErrorFrom('#year')
       isInvalid.passInvalid('#datefield', '#year', 'Preencha os campos vazios')
       monthInput.classList.add('js-invalid')
     } else if (!monReg || !yearReg) {
       isInvalid.clearErrorFrom('#year')
-      isInvalid.passInvalid('#datefield', '#year', 'Apenas números')
+      isInvalid.passInvalid('#datefield', '#year', 'Formato incorreto')
       monthInput.classList.add('js-invalid')
     } else {
       isInvalid.clearErrorFrom('#year')
@@ -139,17 +138,18 @@ const validate = {
   },
 
   inputCVC() {
-    let value = this.value
-    const cvcRegTest = /^[0-9]*$/.test(value)
-    if (value === '') {
+    const cvcValue = cvcInput.value
+    const cvcRegTest = /^[0-9]{3}$/.test(cvcValue)
+    if (cvcValue === '') {
       isInvalid.clearErrorFrom('#cardcvc')
       isInvalid.passInvalid('#cvcfield', '#cardcvc', 'Preencha o campo')
     } else if (!cvcRegTest) {
       isInvalid.clearErrorFrom('#cardcvc')
-      isInvalid.passInvalid('#cvcfield', '#cardcvc', 'Formato inválido')
+      isInvalid.passInvalid('#cvcfield', '#cardcvc', 'Formato incorreto')
     } else {
       isInvalid.clearErrorFrom('#cardcvc')
     }
+    return cvcRegTest
   },
 }
 
@@ -157,3 +157,24 @@ nameInput.addEventListener('blur', validate.inputName)
 numberInput.addEventListener('blur', validate.inputNumber)
 yearInput.addEventListener('blur', validate.inputDates)
 cvcInput.addEventListener('blur', validate.inputCVC)
+
+// Submit/Reset Form
+const form = document.querySelector('#form-main')
+const reset = document.querySelector('#reset-btn')
+
+function checkInputs(evt) {
+  evt.preventDefault()
+  if (validate.inputName() && validate.inputNumber() && validate.inputDates() && validate.inputCVC()) {
+    document.querySelector('#input-screen').classList.add('hidden')
+    document.querySelector('#success-screen').classList.add('active')
+    this.reset()
+  } else {
+    return
+  }
+}
+form.addEventListener('submit', checkInputs)
+
+reset.onclick = () => {
+  document.querySelector('#input-screen').classList.remove('hidden')
+  document.querySelector('#success-screen').classList.remove('active')
+}

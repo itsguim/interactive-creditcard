@@ -101,12 +101,24 @@ body {
 }
 
 /* ------ Form Section */
+form {
+	position: relative;
+}
+
 .formfield {
 	max-width: 88%;
 	margin-inline: auto;
 	display: flex;
 	flex-direction: column;
 	gap: 1.5rem;
+	transition: 0.4s;
+}
+
+.formfield.hidden {
+	transform: translateY(30rem);
+	opacity: 0;
+	visibility: hidden;
+	position: fixed; /*litle tweak to play with visibility*/
 }
 
 .formfield__fieldset {
@@ -157,7 +169,7 @@ body {
 	width: 5.2rem;
 }
 
-.formfield__btn {
+.btn {
 	border-style: none;
 	background: var(--txt-str-cl);
 	color: var(--neutral);
@@ -166,6 +178,58 @@ body {
 	font-size: var(--fsize-btn);
 	cursor: pointer;
 	margin-top: 0.5rem;
+}
+/* FORM-SUCCESS */
+
+.formfield--success {
+	justify-content: center;
+	gap: 2rem;
+
+	position: absolute;
+	top: 0;
+	left: 1.3rem;
+
+	display: none;
+}
+
+.formfield--success.active {
+	display: flex;
+	animation: littleslide 0.4s forwards;
+}
+
+@keyframes littleslide {
+	from {
+		opacity: 0;
+		transform: translate3d(-20rem, 0, 0);
+	}
+
+	to {
+		opacity: 1;
+		transform: translate3d(0, 0, 0);
+	}
+}
+
+.success__icon img {
+	margin-inline: auto;
+}
+
+.success__text {
+	text-align: center;
+}
+
+.success__text__p1 {
+	font-size: 2.1rem;
+	letter-spacing: 0.2rem;
+}
+
+.success__text__p2 {
+	color: var(--txt-med-cl);
+	padding-top: 1.2rem;
+}
+
+.btn--continue {
+	text-align: center;
+	text-decoration: none;
 }
 
 /* JS DOM */

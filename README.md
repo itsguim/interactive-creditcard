@@ -19,9 +19,9 @@ Esse projeto foi criado afim de testar manipulações da DOM, validações atrav
 
 ### Keypoints :memo:
 
-- Interações visuais ao serem inseridos dados nos campos
-- Validações de dados com Regex
-- Feedback visual dinâmico caso os dados estejam inválidos
+- Interações visuais ao serem inseridos dados nos inputs
+- Validação dos dados utilizando regex
+- Feedback dinâmico caso os dados sejam inválidos
 - Mensagem de sucesso após validação e envio do formulário
 
 ## Screenshots :camera_flash:

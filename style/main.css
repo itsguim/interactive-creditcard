@@ -1,23 +1,20 @@
 :root {
 	--inp-active: hsl(249, 99%, 64%) to hsl(278, 94%, 30%);
 	--inp-error: hsl(0, 100%, 66%);
-
 	--neutral: hsl(0, 0%, 100%);
 	--txt-soft-cl: hsl(270, 3%, 87%);
 	--txt-med-cl: hsl(279, 6%, 55%);
 	--txt-str-cl: hsl(278, 68%, 11%);
-
 	--fsize-btn: 1.2rem;
 	--fsize-label: 0.9rem;
 	--fs-front-mobile: 1.2rem;
 	--fs-back-mobile: 0.9rem;
 	--ffamily: 'Space Grotesk', sans-serif;
 	--fweight: 500;
-
 	--cfront-wid: 20.5rem;
 	--cback-wid: 20rem;
+	--anim-delay: 1.3s;
 }
-/* ---- */
 
 body {
 	font-size: var(--fsize);
@@ -43,7 +40,6 @@ body {
 }
 
 .container {
-	/*Controla a expansão do conteúdo*/
 	position: relative;
 	max-width: 25rem;
 	min-height: 27rem;
@@ -67,6 +63,7 @@ body {
 	z-index: 5;
 	top: 11rem;
 	left: 1rem;
+	animation: littleslide var(--anim-delay) forwards;
 }
 
 .card__number {
@@ -94,6 +91,18 @@ body {
 	min-height: 13.2rem;
 	top: 3rem;
 	right: 1rem;
+	animation: backslide var(--anim-delay) forwards;
+}
+
+@keyframes backslide {
+	from {
+		opacity: 0;
+		transform: translate3d(20rem, 0, 0);
+	}
+	to {
+		opacity: 1;
+		transform: translate3d(0, 0, 0);
+	}
 }
 
 .card__cvc {
@@ -184,11 +193,10 @@ form {
 .formfield--success {
 	justify-content: center;
 	gap: 2rem;
-
+	width: 100%;
 	position: absolute;
 	top: 0;
 	left: 1.3rem;
-
 	display: none;
 }
 
@@ -202,7 +210,6 @@ form {
 		opacity: 0;
 		transform: translate3d(-20rem, 0, 0);
 	}
-
 	to {
 		opacity: 1;
 		transform: translate3d(0, 0, 0);

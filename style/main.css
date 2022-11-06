@@ -24,6 +24,7 @@ body {
 
 #cards {
 	position: relative;
+	overflow-x: hidden; /* Prevents creating markup with the anim. */
 }
 
 #cards::before {

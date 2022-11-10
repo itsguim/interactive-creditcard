@@ -5,6 +5,7 @@
 	--txt-soft-cl: hsl(270, 3%, 87%);
 	--txt-med-cl: hsl(279, 6%, 55%);
 	--txt-str-cl: hsl(278, 68%, 11%);
+	--btn-cl: hsl(278, 18%, 43%);
 	--fsize-btn: 1.2rem;
 	--fsize-label: 0.9rem;
 	--fs-front-mobile: 1.2rem;
@@ -188,6 +189,12 @@ form {
 	font-size: var(--fsize-btn);
 	cursor: pointer;
 	margin-top: 0.5rem;
+	transition: box-shadow 0.25s, border-color 1s;
+}
+
+.btn:hover {
+	box-shadow: inset 0 -3.25em 0 0 var(--btn-cl);
+	border-color: var(--btn-cl);
 }
 /* FORM-SUCCESS */
 

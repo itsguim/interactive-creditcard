@@ -1,0 +1,92 @@
+@media screen and (min-width: 1440px) {
+	:root {
+		--cfront-wid: 23rem;
+		--cback-wid: 23rem;
+		--anim-delay: 1s;
+		--fs-front-mobile: 1.4rem;
+		--fs-back-mobile: 1.1rem;
+	}
+
+	main {
+		display: flex;
+		overflow-x: hidden;
+	}
+
+	#cards,
+	#form {
+		display: flex;
+		align-items: center;
+		width: 50%;
+		height: 100vh;
+	}
+
+	#cards {
+		width: 60%;
+	}
+
+	#cards::before {
+		background: url(../assets/images/bg-main-desktop.png) no-repeat;
+		background-size: cover;
+		width: 40vw;
+		height: 100vh;
+	}
+
+	.container {
+		min-height: 35rem;
+	}
+
+	#form .container {
+		display: flex;
+		margin-left: 1rem;
+		align-items: center;
+		animation: backslide var(--anim-delay) forwards;
+	}
+
+	.card {
+		box-shadow: 10px 10px 29px -12px rgba(0, 0, 0, 0.31);
+	}
+
+	.card--front {
+		top: 4.5rem;
+		left: -4rem;
+		padding: 1.2rem 1.2rem 1.2rem 1.2rem;
+	}
+
+	.card__number {
+		margin-top: 2.5rem;
+	}
+
+	.card__details {
+		font-size: 0.8rem;
+		margin-block: 1.2rem 0.6rem;
+		padding-right: 1rem;
+	}
+
+	.card--back {
+		top: 20rem;
+		left: -0.5rem;
+		background-size: cover;
+		animation: littleslide var(--anim-delay) forwards;
+	}
+
+	@keyframes littleslide {
+		from {
+			opacity: 0;
+			transform: translate3d(-40rem, 0, 0);
+		}
+	}
+
+	.formfield.hidden {
+		overflow-x: hidden; /*prevent the form appearing before it fades out during the animation */
+		transform: translateX(30rem);
+	}
+
+	.formfield--success {
+		top: -8rem;
+		min-width: 25rem;
+	}
+
+	.formfield--success.active {
+		animation: backslide 0.4s forwards;
+	}
+}

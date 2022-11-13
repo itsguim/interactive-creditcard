@@ -111,7 +111,7 @@ body {
 	padding-right: 3rem;
 }
 
-/* ------ Form Section */
+/* ----------- Form Section */
 form {
 	position: relative;
 }
@@ -247,6 +247,10 @@ form {
 	text-decoration: none;
 }
 
+.nav {
+	display: none;
+}
+
 /* JS DOM */
 
 .js-invalid {
@@ -254,6 +258,31 @@ form {
 }
 
 .js-invalid ~ .error-msg {
+	display: inline-block;
 	color: var(--inp-error);
 	font-size: 12px;
+	animation: lilshake 0.82s;
+}
+
+@keyframes lilshake {
+	10%,
+	90% {
+		transform: translate3d(-1px, 0, 0);
+	}
+
+	20%,
+	80% {
+		transform: translate3d(2px, 0, 0);
+	}
+
+	30%,
+	50%,
+	70% {
+		transform: translate3d(-4px, 0, 0);
+	}
+
+	40%,
+	60% {
+		transform: translate3d(4px, 0, 0);
+	}
 }

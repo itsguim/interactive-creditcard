@@ -9,7 +9,6 @@
 
 	main {
 		display: flex;
-		overflow-x: hidden;
 	}
 
 	#cards,
@@ -18,6 +17,10 @@
 		align-items: center;
 		width: 50%;
 		height: 100vh;
+	}
+
+	#form {
+		overflow: hidden;
 	}
 
 	#cards {
@@ -88,5 +91,46 @@
 
 	.formfield--success.active {
 		animation: backslide 0.4s forwards;
+	}
+
+	.nav {
+		display: block;
+		position: fixed;
+		z-index: 10;
+		bottom: 2rem;
+		right: 2rem;
+	}
+
+	.nav__list {
+		display: flex;
+		flex-direction: column;
+		gap: 1rem;
+	}
+
+	.nav__link {
+		text-decoration: none;
+		background-color: #fff;
+	}
+
+	.nav__btn {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		border: 1px solid var(--txt-soft-cl);
+		background: #fff;
+		box-shadow: 10px 10px 35px -10px rgba(0, 0, 0, 0.25);
+		border-radius: 50%;
+		width: 3rem;
+		height: 3rem;
+		cursor: pointer;
+		transition: transform 0.2s;
+	}
+
+	.nav__btn img {
+		width: 24px;
+	}
+
+	.nav__btn:hover {
+		transform: translate3d(0, -8px, 0);
 	}
 }

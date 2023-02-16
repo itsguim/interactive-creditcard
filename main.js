@@ -133,8 +133,7 @@ const validate = {
       isInvalid.clearErrorFrom('#year')
       monthInput.classList.remove('js-invalid')
     }
-    let testValues = { monReg, yearReg } // Returning regex.test from both values
-    return testValues
+    return ((monReg && yearReg) ? true : false)
   },
 
   inputCVC() {

@@ -18,7 +18,7 @@ O intuito desse projeto é simular um formulário de cartão de crédito com val
 A validação é realizada a cada mudança de Input, oferecendo feedback caso os dados estejam inválidos. O formulário só é enviado caso todos os dados estejam corretamente preenchidos e verificados.
 <br> O design foi concedido por [Front-end Mentor](https://www.frontendmentor.io/challenges/interactive-card-details-form-XpS8cKZDWw).<br>
 
-- [Live Project <-](https://guimcard.netlify.app)
+- [Live Project <-](https://itsguim.github.io/interactive-creditcard/)
 
 ### Keypoints :memo:
 

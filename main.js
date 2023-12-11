@@ -58,15 +58,12 @@ const validate = {
 
   inputNumber() {
     const numValue = numberInput.value
-    const numRegTest = /(\d{4}-\d{4}-\d{4}-\d{4})/g.test(numValue)
+    const numRegTest = /^\d{4}( \d{4}){3}$/.test(numValue)
+    isInvalid.clearErrorFrom('#cardnumber')
     if (numValue === '') {
-      isInvalid.clearErrorFrom('#cardnumber')
       isInvalid.passInvalid('#numberfield', '#cardnumber', 'Por favor, preencha o campo')
     } else if (!numRegTest) {
-      isInvalid.clearErrorFrom('#cardnumber')
-      isInvalid.passInvalid('#numberfield', '#cardnumber', 'Formato inválido, ex: (1111-2222-3333-0000)')
-    } else {
-      isInvalid.clearErrorFrom('#cardnumber')
+      isInvalid.passInvalid('#numberfield', '#cardnumber', 'Formato inválido, apenas números.')
     }
     return numRegTest
   },
